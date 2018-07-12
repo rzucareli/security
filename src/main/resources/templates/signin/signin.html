@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../resources/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <script th:src="@{/js/bootstrap.min.js}" src="../../resources/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/jquery-3.3.1.min.js}" src="../../resources/js/jquery-3.3.1.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Signup</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <div class="row justify-content-center" style="margin-top: 10px">
+        <div class="" style="width: 355px;">
+            <div class="card">
+                <article class="card-body">
+                    <a th:href="@{/signup}" class="float-right btn btn-outline-primary">Sign up</a>
+                    <h4 class="card-title mb-4 mt-1">Sign in</h4>
+                    <p>
+                        <a href="" class="btn btn-block btn-outline-info"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
+                        <a href="" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+                    </p>
+                    <hr>
+                    <form th:action="@{/login}" method="post">
+                        <div class="form-group">
+                            <input id="username" name="username" class="form-control" placeholder="email" type="email">
+                        </div> <!-- form-group// -->
+                        <div class="form-group">
+                            <input id="password" name="password" class="form-control" placeholder="password" type="password">
+                        </div> <!-- form-group// -->
+                        <div class="form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="remember" name="remember-me">
+                                <label class="custom-control-label" for="remember">Remember Me</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+                                </div> <!-- form-group// -->
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <a class="small" href="#">Forgot password?</a>
+                            </div>
+                        </div> <!-- .row// -->
+                    </form>
+                </article>
+            </div> <!-- card.// -->
+        </div> <!-- col//-->
+    </div>
+</div>
+</body>
+</html>
