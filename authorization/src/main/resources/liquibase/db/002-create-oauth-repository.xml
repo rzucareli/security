@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="create.oauth.repository" author="rafael.zucareli">
+        <createTable tableName="oauth_client_details">
+            <column name="client_id" type="varchar(255)">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="resource_ids" type="varchar(256)"/>
+            <column name="client_secret" type="varchar(256)"/>
+            <column name="scope" type="varchar(256)"/>
+            <column name="authorized_grant_types" type="varchar(256)"/>
+            <column name="web_server_redirect_uri" type="varchar(256)"/>
+            <column name="authorities" type="varchar(256)"/>
+            <column name="access_token_validity" type="int"/>
+            <column name="refresh_token_validity" type="int"/>
+            <column name="additional_information" type="varchar(4096)"/>
+            <column name="autoapprove" type="varchar(256)"/>
+        </createTable>
+        <createTable tableName="oauth_client_token">
+            <column name="token_id" type="varchar(256)" />
+            <column name="token" type="longvarbinary" />
+            <column name="authentication_id" type="varchar(256)">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="user_name" type="varchar(256)" />
+            <column name="client_id" type="varchar(256)" />
+        </createTable>
+        <createTable tableName="oauth_access_token">
+            <column name="token_id" type="varchar(256)" />
+            <column name="token" type="longvarbinary" />
+            <column name="authentication_id" type="varchar(256)">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="user_name" type="varchar(256)" />
+            <column name="client_id" type="varchar(256)" />
+            <column name="authentication" type="longvarbinary" />
+            <column name="refresh_token" type="varchar(256)" />
+        </createTable>
+        <createTable tableName="oauth_refresh_token">
+            <column name="token_id" type="varchar(256)" />
+            <column name="token" type="longvarbinary" />
+            <column name="authentication" type="longvarbinary" />
+        </createTable>
+        <createTable tableName="oauth_code">
+            <column name="code" type="varchar(256)" />
+            <column name="authentication" type="longvarbinary" />
+        </createTable>
+        <createTable tableName="oauth_approvals">
+            <column name="userId" type="varchar(256)" />
+            <column name="clientId" type="varchar(256)" />
+            <column name="scope" type="varchar(256)" />
+            <column name="status" type="varchar(10)" />
+            <column name="expiresAt" type="timestamp" />
+            <column name="lastModifiedAt" type="timestamp" />
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

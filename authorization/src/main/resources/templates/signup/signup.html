@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Signup</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <h1>Register New User</h1>
+    <form id="userForm" th:action="@{/user/register}" th:object="${user}" method="post">
+        <div th:if="${#fields.hasErrors('global')}" th:errors="*{global}" class="alert alert-danger">Incorrect password confirmation</div>
+        <input type="hidden" th:field="*{id}"/>
+
+        <div class="form-group">
+            <label for="email" th:classappend="${#fields.hasErrors('email')} ? 'text-danger'">E-Mail</label>
+            <input type="email" id="email" name="email" th:field="*{email}" class="form-control" placeholder="Enter your E-Mail"/>
+        </div>
+
+        <div class="form-group">
+            <label for="password" th:classappend="${#fields.hasErrors('password')} ? 'text-danger'">Password</label>
+            <input id="password" type="password" title="password" th:field="*{password}" class="form-control" placeholder="Enter your Password" />
+        </div>
+        <div class="form-group">
+            <label for="passwordConfirmation" th:classappend="${#fields.hasErrors('passwordConfirmation')} ? 'text-danger'">Password Confirmation</label>
+            <input id="passwordConfirmation" type="password" title="passwordConfirmation" th:field="*{passwordConfirmation}" class="form-control" placeholder="Confirm your Password" />
+        </div>
+        <input type="submit" class="btn btn-primary" value="Register"/>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+</body>
+</html>
